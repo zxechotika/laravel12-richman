@@ -61,7 +61,8 @@ Route::get("/gallery/bird", function () {
 });
 
 Route::get("/gallery/cat", function () {
-    $cat = "https://media.newyorker.com/photos/5a875e3f33aebd0cab9bab12/master/w_2560%2Cc_limit/Brody-Passionate-Politics-Black-Panther.jpg";return view("test/cat", compact("cat"));
+    $cat = "https://media.newyorker.com/photos/5a875e3f33aebd0cab9bab12/master/w_2560%2Cc_limit/Brody-Passionate-Politics-Black-Panther.jpg";
+    return view("test/cat", compact("cat"));
 });
 
 Route::get("/gallery/ant", function () {
@@ -77,4 +78,16 @@ Route::get("/gallery/bird", function () {
 Route::get("/gallery/cat", function () {
     $cat = "https://media.newyorker.com/photos/5a875e3f33aebd0cab9bab12/master/w_2560%2Cc_limit/Brody-Passionate-Politics-Black-Panther.jpg";
     return view("test/cat", compact("cat"));
+});
+
+Route::get("/teacher", function () {
+    return view("teacher");
+});
+
+Route::get("/student", function () {
+    return view("student");
+});
+
+Route::get("/theme", function () {
+    return view("theme");
 });
