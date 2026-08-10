@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+{
+    Schema::create('chotika', function (Blueprint $table) {
+        $table->id();
+        
+        // --- ต้องมี 5 บรรทัดนี้เพิ่มเข้ามาครับ ---
+        $table->integer('age')->nullable();
+        $table->float('weight')->nullable();
+        $table->string('note')->nullable();
+        $table->date('date')->nullable();
+        $table->text('remark')->nullable();
+        // ------------------------------------
+
+        $table->timestamps();
+    });
+}
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('chotika');
+    }
+};
