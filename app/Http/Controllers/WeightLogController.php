@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class WeightLogController extends Controller
 {
-    // 1. แสดงรายการบันทึก + ข้อมูลสำหรับ Google Chart
+    // 1. แสดงรายการบันทึกทั้งหมด
     public function index()
     {
         $logs = WeightLog::orderBy('date', 'asc')->get();
@@ -35,9 +35,9 @@ class WeightLogController extends Controller
             'note.max' => 'บันทึกเพิ่มเติมต้องไม่เกิน 255 ตัวอักษร',
         ]);
 
-        WeightLog::create($request->only(['date', 'weight', 'note']));
+        WeightLog::create($request->only(['date', 'weight', 'note', 'age', 'remark']));
 
-        return redirect()->route('weight.index')->with('success', 'บันทึกน้ำหนักเรียบร้อยแล้ว');
+        return redirect()->route('weights.index')->with('success', 'บันทึกน้ำหนักเรียบร้อยแล้ว');
     }
 
     // 4. แสดงฟอร์มแก้ไขข้อมูล
@@ -62,9 +62,9 @@ class WeightLogController extends Controller
             'weight.numeric' => 'น้ำหนักต้องเป็นตัวเลขเท่านั้น',
         ]);
 
-        $log->update($request->only(['date', 'weight', 'note']));
+        $log->update($request->only(['date', 'weight', 'note', 'age', 'remark']));
 
-        return redirect()->route('weight.index')->with('success', 'อัปเดตข้อมูลเรียบร้อยแล้ว');
+        return redirect()->route('weights.index')->with('success', 'อัปเดตข้อมูลเรียบร้อยแล้ว');
     }
 
     // 6. ลบข้อมูล
@@ -73,6 +73,6 @@ class WeightLogController extends Controller
         $log = WeightLog::findOrFail($id);
         $log->delete();
 
-        return redirect()->route('weight.index')->with('success', 'ลบรายการบันทึกเรียบร้อยแล้ว');
+        return redirect()->route('weights.index')->with('success', 'ลบรายการบันทึกเรียบร้อยแล้ว');
     }
 }

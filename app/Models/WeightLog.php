@@ -9,5 +9,13 @@ class WeightLog extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'weight', 'note'];
+    protected $table = 'chotika'; // กำหนดให้ตรงกับตารางในฐานข้อมูล
+
+    protected $fillable = [
+        'age',
+        'weight',
+        'note',
+        'date',
+        'remark',
+    ];
 }

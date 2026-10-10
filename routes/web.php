@@ -3,12 +3,13 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WeightController;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\WeightLogController;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -174,23 +175,11 @@ Route::post('/product-submit', function (Request $request) {
 // Your Custom Applications
 // ==========================================
 
-// 1. Weight Tracker System
-Route::resource('weights', WeightController::class)->middleware('auth');
+// 1. Weight Tracker System (ใช้ WeightController จัดการร่วมกับโฟลเดอร์ weight_logs)
+Route::resource('weights', WeightLogController::class)->middleware('auth');
 
 // 2. About Me Page
 Route::get('/about-me', function () {
     session(['url.intended' => url('/about-me')]);
     return view('about-me'); 
-});
-
-// 3. Customer Management System (CMS)
-Route::prefix('customers')->group(function () {
-    Route::get('/', [CustomerController::class, 'index'])->name('customers.index');
-    
-    Route::middleware('auth')->group(function () {
-        Route::get('/export', [CustomerController::class, 'export'])->name('customers.export');
-        Route::post('/', [CustomerController::class, 'store'])->name('customers.store');
-        Route::put('/{customer}', [CustomerController::class, 'update'])->name('customers.update');
-        Route::delete('/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
-    });
 });

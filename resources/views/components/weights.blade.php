@@ -16,7 +16,7 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4 shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="{{ route('weight.index') }}">
+            <a class="navbar-brand fw-bold" href="{{ route('weights.index') }}">
                 <i class="bi bi-speedometer2 me-2"></i>Weight Tracker
             </a>
         </div>

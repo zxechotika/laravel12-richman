@@ -1,4 +1,4 @@
-<x-weight>
+<x-weights>
     <x-slot:title>แก้ไขบันทึกน้ำหนัก</x-slot:title>
 
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                     <i class="bi bi-pencil-square me-1"></i> แก้ไขข้อมูลน้ำหนัก
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('weight.update', $log->id) }}" method="POST">
+                    <form action="{{ route('weights.update', $log->id) }}" method="POST">
                         @csrf
                         @method('PUT')
 
@@ -50,7 +50,7 @@
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('weight.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('weights.index') }}" class="btn btn-secondary">
                                 <i class="bi bi-arrow-left"></i> ยกเลิก
                             </a>
                             <button type="submit" class="btn btn-primary">
@@ -62,4 +62,4 @@
             </div>
         </div>
     </div>
-</x-weight>
+</x-weights>
